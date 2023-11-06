@@ -1,0 +1,42 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 20vh;
+    background-color: darkgrey;
+}
+
+.Header a {
+    font-size: 30px;
+    color: blue;
+    text-decoration: none;
+
+}
+.Header p {
+    font-size: 30px;
+    color: blue;
+    margin: 0;
+    padding: 0;
+}
+
+.Header a[class='active'] {
+    color: chocolate;
+}
+.box1 {
+    display: flex;
+    align-items: center;
+    width: 20vw;
+}
+.box2 {
+    display: flex;
+    width: 60vw;
+    align-items: center;
+    justify-content: space-around;
+}
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: blue;
+}
