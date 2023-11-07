@@ -10,12 +10,12 @@ interface IProps extends PropsWithChildren {
 }
 
 const Movie: FC<IProps> = ({movie}) => {
-    let {original_title, poster_path, vote_average, id} = movie;
+    const {original_title, poster_path, vote_average, id} = movie;
 
     return (
         <div className={css.Movie}>
             <PosterPreview poster_path={poster_path} original_title={original_title}/>
-            <Link to={`/${id}`} state={id} >{original_title}</Link>
+            <Link to={`/inform/${id}`} state={id} >{original_title}</Link>
             <div >{vote_average}</div>
 
         </div>

@@ -14,9 +14,9 @@ const Header: FC<IProps> = () => {
                 <p>The MovieDB</p>
             </div>
             <div className={css.box2}>
-                <NavLink to={'movies'}>Movies</NavLink>
-                <NavLink to={'genres'}>Genres</NavLink>
-                <NavLink to={'search'}>Search</NavLink>
+                <NavLink to={'/movies'}>Movies</NavLink>
+                <NavLink to={'/genres'}>Genres</NavLink>
+                <NavLink to={'/search'}>Search</NavLink>
             </div>
             <div className={css.avatar}>
                 <div>Movie</div>

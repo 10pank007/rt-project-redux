@@ -7,15 +7,14 @@ interface IProps extends PropsWithChildren {
 
 }
 
-const MoviesLayout: FC<IProps> = () => {
+const MainLayout: FC<IProps> = () => {
 
     return (
         <div>
             <Header/>
             <Outlet/>
-            <MoviesPage/>
         </div>
     );
 };
 
-export {MoviesLayout};
+export {MainLayout};

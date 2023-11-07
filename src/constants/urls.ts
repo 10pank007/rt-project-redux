@@ -12,7 +12,10 @@ const keyword = '/keyword'
 const urls = {
     movie: {
         base: `${discover}${movie}`,
-        oneMovie: movie
+        oneMovie: movie,
+        infoMovie: {
+            byId: (id: string) => `${movie}/${id}`
+        }
     }
     ,
     genre: {
