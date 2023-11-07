@@ -7,7 +7,7 @@ interface IProps extends PropsWithChildren {
 
 }
 
-const MainLayout: FC<IProps> = () => {
+const MoviesLayout: FC<IProps> = () => {
 
     return (
         <div>
@@ -18,4 +18,4 @@ const MainLayout: FC<IProps> = () => {
     );
 };
 
-export {MainLayout};
+export {MoviesLayout};

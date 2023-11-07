@@ -1,0 +1,18 @@
+.Movie {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 1px;
+}
+.Movie img {
+    width: 150px;
+    height: 150px;
+}
+
+.Movie a {
+    text-decoration: none;
+}

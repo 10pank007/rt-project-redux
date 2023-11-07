@@ -4,7 +4,8 @@ import {urls} from "../constants/urls";
 import {IRes} from "../types/IResType";
 
 const moviesService = {
-    getAll: (page: string ): IRes<IObjMovie> => axiosService.get(urls.movie.base, {params: {page}})
+    getAll: (page: string ): IRes<IObjMovie> => axiosService.get(urls.movie.base, {params: {page}}),
+    getMovieById: (id: string) => axiosService.get(urls.movie.oneMovie + `/${id}`)
 }
 
 export {moviesService}

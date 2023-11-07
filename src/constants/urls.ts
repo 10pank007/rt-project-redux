@@ -5,15 +5,21 @@ const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTRjN2I5YWQxMTFkODQzODhlZTMwYTFm
 const discover = '/discover';
 const movie = '/movie';
 const genre = '/genre';
-const list = '/list'
+const list = '/list';
+const search = '/search';
+const keyword = '/keyword'
 
 const urls = {
     movie: {
-        base: `${discover}${movie}`
+        base: `${discover}${movie}`,
+        oneMovie: movie
     }
     ,
     genre: {
         base: `${genre}${movie}${list}`
+    },
+    search: {
+        base: `${search}${keyword}`
     }
 }
 
