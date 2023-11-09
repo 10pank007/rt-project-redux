@@ -7,10 +7,10 @@ interface IProps extends PropsWithChildren {
 }
 
 const Genre: FC<IProps> = ({genre}) => {
-    let {name} = genre;
+    let {name, id} = genre;
     return (
         <div>
-            <Link to={'/name'}>{name}</Link>
+            <Link to={`${id}`}>{name}</Link>
         </div>
     );
 };

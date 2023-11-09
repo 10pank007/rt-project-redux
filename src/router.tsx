@@ -4,24 +4,19 @@ import {MoviesPage} from "./pages/MoviesPage";
 import {GenresPage} from "./pages/GenresPage";
 import {SearchPage} from "./pages/SearchPage";
 import {MoviesInfoPage} from "./pages/MoviesInfoPage";
+import {GenreLists} from "./components/GenresComponent/GenreLists";
 
 const router = createBrowserRouter([
     {path: '',  element: <MainLayout/>, children: [
             {index: true, element: <Navigate to={'movies'}/>},
             {path: 'movies', element: <MoviesPage/>},
             {path: 'inform/:id' , element: <MoviesInfoPage id={''}/>},
-            {path: 'genres', element: <GenresPage/>},
+            {path: 'genres', element: <GenresPage/>, children: [
+                    {path:':id', element: <GenreLists/>}
+                ]},
             {path: 'search', element: <SearchPage/>}
         ]},
-    // {path: ':id', element: <MoviesDetailsLayout/>, children: [
-    //         {element: <MoviesInfoPage  id={''}/>, }
-    //     ]},
-    // {element: <GenresLayout/>, children: [
-    //
-    //     ]},
-    // {element: <SearchLayout/>, children: [
-    //
-    //     ]}
+
 ]);
 
 export {router}
