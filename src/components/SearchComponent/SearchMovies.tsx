@@ -1,16 +1,15 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 import {IObjMovie} from "../../interfaces/movie";
 import {useSearchParams} from "react-router-dom";
-import {moviesService} from "../../services/moviesService";
 import css from "../MoviesComponent/Movies.module.css";
 import {Movie} from "../MoviesComponent/Movie";
 
 interface IProps extends PropsWithChildren {
-    search: IObjMovie;
+    movie: IObjMovie,
     page: string,
 }
 
-const SearchMovies: FC<IProps> = ({search, page}) => {
+const SearchMovies: FC<IProps> = ({movie, page}) => {
     let [query, setQuery] = useSearchParams({page: '1'});
 
 
@@ -28,7 +27,7 @@ const SearchMovies: FC<IProps> = ({search, page}) => {
     }
     return (
         <div className={css.Movies}>
-            {search.results && search.results.map((value, index) => <Movie page={page} key={index} movie={value}/>)}
+            {movie.results && movie.results.map((value, index) => <Movie page={page} key={index} movie={value}/>)}
             <div>
                 <button onClick={prev} disabled={page === '1'}>prev</button>
                 <button onClick={next}>next</button>

@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren, useState} from 'react';
+import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {useForm} from "react-hook-form";
 import {ISearch} from "../../interfaces/search";
 import {searchService} from "../../services/searchService";
@@ -11,22 +11,28 @@ interface IProps extends PropsWithChildren {
 
 const SearchForm: FC<IProps> = () => {
     let {reset, register, handleSubmit} = useForm();
-    const [search, setSearch] = useState<IObjMovie>();
+    const [search, setSearch] = useState<string>();
     let [query, setQuery] = useSearchParams({page: '1'});
     let page = query.get('page');
+    const [movie, setMovie] = useState<IObjMovie>(null);
+    console.log(page, 'page', movie, 'movie');
 
-    const save = async (data: ISearch) => {
-        console.log(data);
-        let vair = await searchService.getByQuery(page, data.search);
-        setSearch(vair.data);
-        reset();
+
+    const save =  (data: ISearch) => {
+        setSearch(data.search);
+        //reset();
     };
+
+    useEffect(() => {
+        searchService.getByQuery(search, page).then(({data}) => setMovie(data));
+    }, [search, page]);
+
     return (
         <form onSubmit={handleSubmit(save)}>
             <input type={'text'} placeholder={'movie'} {...register('search')}/>
             <button>search</button>
             <hr/>
-            {search && <SearchMovies search={search} page={page} />}
+            {movie && <SearchMovies movie={movie} page={page} />}
         </form>
     );
 };

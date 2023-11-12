@@ -7,7 +7,6 @@ const movie = '/movie';
 const genre = '/genre';
 const list = '/list';
 const search = '/search';
-const keyword = '/keyword'
 
 const urls = {
     movie: {

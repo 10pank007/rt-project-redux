@@ -11,8 +11,7 @@ const MoviesInfo: FC<IProps> = ({id}) => {
     const [moviesInfo, setMoviesInfo] = useState<IOneMovie>();
     useEffect(() => {
         moviesService.getMovieById(id).then(value => setMoviesInfo(value.data))
-    }, []);
-    console.log(moviesInfo)
+    }, [id]);
 
     return (
         <div>
