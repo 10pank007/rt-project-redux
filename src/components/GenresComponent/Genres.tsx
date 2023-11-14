@@ -2,6 +2,7 @@ import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {genresService} from "../../services/genresService";
 import {IGenres} from "../../interfaces/genres";
 import {Genre} from "./Genre";
+import css from './Genres.module.css';
 
 interface IProps extends PropsWithChildren {
 }
@@ -13,7 +14,7 @@ const Genres: FC<IProps> = () => {
     }, []);
     console.log(genres)
     return (
-        <div>
+        <div className={css.Genres}>
             {genres && genres.map(value => <Genre genre={value}/>)}
         </div>
     );
