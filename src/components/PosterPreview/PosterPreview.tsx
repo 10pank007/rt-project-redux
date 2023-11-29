@@ -1,5 +1,6 @@
 import React, {FC, PropsWithChildren} from 'react';
 import {imgURL} from "../../constants/urls";
+import css from "./image-not-found.jpg";
 
 interface IProps extends PropsWithChildren {
     poster_path: string,
@@ -8,7 +9,7 @@ interface IProps extends PropsWithChildren {
 
 const PosterPreview: FC<IProps> = ({original_title, poster_path}) => {
     return (
-        <img src={imgURL + poster_path} alt={original_title}/>
+        <img src={poster_path? imgURL + poster_path : css} alt={original_title}/>
     );
 };
 

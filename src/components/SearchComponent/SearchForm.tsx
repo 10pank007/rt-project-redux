@@ -10,15 +10,19 @@ interface IProps extends PropsWithChildren {
 }
 
 const SearchForm: FC<IProps> = () => {
-    let {reset, register, handleSubmit} = useForm();
-    let [query] = useSearchParams({page: '1'});
-    let page = query.get('page');
+    let {register, handleSubmit} = useForm();
+    let [query, setQuery] = useSearchParams({page: '1'});
 
+    let page = query.get('page');
     const {search, movie} = useAppSelector(state => state.search);
     const dispatch = useAppDispatch();
 
     const save =  (data: ISearch) => {
         dispatch(searchActions.putSearch(data.search));
+        setQuery(page=> {
+            page.set("query", data.search);
+            return page
+        })
     };
 
     useEffect(() => {
@@ -30,7 +34,7 @@ const SearchForm: FC<IProps> = () => {
             <input type={'text'} placeholder={'movie'} {...register('search')}/>
             <button>search</button>
             <hr/>
-            {movie && <SearchMovies movie={movie} page={page} />}
+            {movie && query.get("query") && <SearchMovies movie={movie} page={page}/>}
         </form>
     );
 };

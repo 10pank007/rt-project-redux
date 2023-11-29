@@ -24,7 +24,7 @@ const Header: FC<IProps> = () => {
             </div>
             <div className={css.avatar}>
                 <button onClick={() => dispatch(themeActions.changeTheme())}>
-                    Click me
+                    Change theme
                 </button>
                 <div>Movie</div>
                 <img src={img}  alt={'img'}/>

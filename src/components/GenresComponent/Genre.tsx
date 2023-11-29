@@ -10,7 +10,7 @@ const Genre: FC<IProps> = ({genre}) => {
     let {name, id} = genre;
     return (
         <div>
-            <Link to={`${id}`}>{name}</Link>
+            <Link to={`${id}/${name}`}>{name}</Link>
         </div>
     );
 };

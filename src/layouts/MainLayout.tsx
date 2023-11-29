@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren, useState} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 import {Outlet} from "react-router-dom";
 import {Header} from "../components/Header/Header";
 import {useAppSelector} from "../hooks/reduxHooks";

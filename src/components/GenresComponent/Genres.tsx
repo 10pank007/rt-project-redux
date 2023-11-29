@@ -14,10 +14,10 @@ const Genres: FC<IProps> = () => {
     useEffect(() => {
         dispatch(genreActions.getAll());
     }, [dispatch]);
-    console.log(genres)
+
     return (
         <div className={css.Genres}>
-            {genres && genres.map(value => <Genre genre={value}/>)}
+            {genres && genres.map(value => <Genre genre={value} key={value.id}/>)}
         </div>
     );
 };
