@@ -1,17 +1,16 @@
-import React, {FC, PropsWithChildren, useContext} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 
 import css from './Header.module.css';
 import img from './unnamed.png';
 import {NavLink} from "react-router-dom";
-import {MyContext} from "../../contexts/MyContext";
+import {useAppDispatch} from "../../hooks/reduxHooks";
+import {themeActions} from "../../redux/slices/themeSlice";
 
 interface IProps extends PropsWithChildren {
 }
 
 const Header: FC<IProps> = () => {
-    const { text, setText } = useContext(MyContext);
-    let bool = true;
-
+    const dispatch = useAppDispatch();
 
     return (
         <div className={css.Header}>
@@ -24,8 +23,7 @@ const Header: FC<IProps> = () => {
                 <NavLink to={'/search'}>Search</NavLink>
             </div>
             <div className={css.avatar}>
-                <button onClick={() => {
-                setText('white')}}>
+                <button onClick={() => dispatch(themeActions.changeTheme())}>
                     Click me
                 </button>
                 <div>Movie</div>
