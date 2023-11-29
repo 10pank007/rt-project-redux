@@ -1,31 +1,29 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {ISearch} from "../../interfaces/search";
-import {searchService} from "../../services/searchService";
-import {IObjMovie} from "../../interfaces/movie";
 import {SearchMovies} from "./SearchMovies";
 import {useSearchParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {searchActions} from "../../redux/slices/searchSlice";
 
 interface IProps extends PropsWithChildren {
 }
 
 const SearchForm: FC<IProps> = () => {
     let {reset, register, handleSubmit} = useForm();
-    const [search, setSearch] = useState<string>();
-    let [query, setQuery] = useSearchParams({page: '1'});
+    let [query] = useSearchParams({page: '1'});
     let page = query.get('page');
-    const [movie, setMovie] = useState<IObjMovie>(null);
-    console.log(page, 'page', movie, 'movie');
 
+    const {search, movie} = useAppSelector(state => state.search);
+    const dispatch = useAppDispatch();
 
     const save =  (data: ISearch) => {
-        setSearch(data.search);
-        //reset();
+        dispatch(searchActions.putSearch(data.search));
     };
 
     useEffect(() => {
-        searchService.getByQuery(search, page).then(({data}) => setMovie(data));
-    }, [search, page]);
+        dispatch(searchActions.getSearch({query: search, page: page}));
+    }, [search, page, dispatch]);
 
     return (
         <form onSubmit={handleSubmit(save)}>

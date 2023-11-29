@@ -1,21 +1,24 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {IObjMovie} from "../../interfaces/movie";
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import {useSearchParams} from "react-router-dom";
-import {moviesService} from "../../services/moviesService";
 import {Movie} from "./Movie";
 import css from './Movies.module.css'
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {movieActions} from "../../redux/slices/movieSlice";
 
 interface IProps extends PropsWithChildren {
 }
 
 const Movies: FC<IProps> = () => {
-    const [objMovie, setObjMovie] = useState<IObjMovie>({page: 0, results:null, total_pages:0, total_results: 0})
     let [query, setQuery] = useSearchParams({page: '1'});
     let page = query.get('page');
 
+    const {objMovie} = useAppSelector(state => state.movie);
+    const dispatch = useAppDispatch();
+
+
     useEffect(()=> {
-        moviesService.getAll(query.get('page')).then(({data}) => {setObjMovie(data)});
-    }, [page]);
+        dispatch(movieActions.getAll({page}));
+    }, [page, dispatch]);
 
     const prev =()=> {
         setQuery(prev1 => {

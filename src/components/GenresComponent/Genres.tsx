@@ -1,17 +1,19 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {genresService} from "../../services/genresService";
-import {IGenres} from "../../interfaces/genres";
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import {Genre} from "./Genre";
 import css from './Genres.module.css';
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {genreActions} from "../../redux/slices/genreSlice";
 
 interface IProps extends PropsWithChildren {
 }
 
 const Genres: FC<IProps> = () => {
-    const [genres, setGenres] = useState<IGenres[]>();
+    const {genres: {genres}} = useAppSelector(state => state.genre)
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
-        genresService.getAllGenres().then(({data: {genres}}) => setGenres(genres));
-    }, []);
+        dispatch(genreActions.getAll());
+    }, [dispatch]);
     console.log(genres)
     return (
         <div className={css.Genres}>

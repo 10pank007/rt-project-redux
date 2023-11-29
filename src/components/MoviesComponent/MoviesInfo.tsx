@@ -1,17 +1,20 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
-import {IOneMovie} from "../../interfaces/movie";
-import {moviesService} from "../../services/moviesService";
+import React, {FC, PropsWithChildren, useEffect} from 'react';
 import {MovieInfo} from "./MovieInfo";
+import {useAppDispatch, useAppSelector} from "../../hooks/reduxHooks";
+import {movieActions} from "../../redux/slices/movieSlice";
 
 interface IProps extends PropsWithChildren {
     id: string;
 }
 
 const MoviesInfo: FC<IProps> = ({id}) => {
-    const [moviesInfo, setMoviesInfo] = useState<IOneMovie>();
+
+
+    const {moviesInfo} = useAppSelector(state => state.movie);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        moviesService.getMovieById(id).then(value => setMoviesInfo(value.data))
-    }, [id]);
+        dispatch(movieActions.getById({id}));
+    }, [id, dispatch]);
 
     return (
         <div>
