@@ -11,12 +11,6 @@ interface IState {
 
 const initialState: IState = {
     objMovie: {page: 0, results:null, total_pages:0, total_results: 0},
-    // moviesInfo: {adult: false, backdrop_path: null, belongs_to_collection: null,
-    // budget: 0, genres: [], homepage: null, id: 0, imdb_id: null, original_language: null,
-    // original_title: null, overview: null, popularity: 0, poster_path: null,
-    // production_companies: [], production_countries: [], release_date: null,
-    // revenue: 0, runtime: 0, spoken_languages: [], status: null, tagline: null, title: null,
-    // video: false, vote_average: 0, vote_count: 0}
     moviesInfo: null
 }
 

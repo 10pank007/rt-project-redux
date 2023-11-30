@@ -3,6 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 interface IState {
     trigger: boolean
 }
+
 const initialState: IState = {
     trigger: true
 };
