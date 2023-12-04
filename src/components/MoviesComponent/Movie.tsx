@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 import {IMovie} from "../../interfaces/movie";
 import css from './Movie.module.css'
 import {Link} from "react-router-dom";

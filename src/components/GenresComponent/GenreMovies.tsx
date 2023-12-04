@@ -1,9 +1,8 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, {FC, PropsWithChildren} from 'react';
 import {IObjMovie} from "../../interfaces/movie";
-import {SetURLSearchParams, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import css from "../MoviesComponent/Movies.module.css";
 import {Movie} from "../MoviesComponent/Movie";
-import {moviesService} from "../../services/moviesService";
 
 interface IProps extends PropsWithChildren {
     objGenre: IObjMovie,

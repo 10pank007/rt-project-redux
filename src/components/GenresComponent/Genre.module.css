@@ -1,5 +1,13 @@
 .Genre {
+    width: calc(100vw / 19);
+    height: 30px;
+    border: black solid 1px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: green;
+    padding: 5px;
+}
+.Genre a{
+    text-decoration: none;
 }

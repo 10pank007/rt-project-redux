@@ -17,6 +17,7 @@ const MovieInfo: FC<IProps> = ({moviesInfo}) => {
             <h1>{original_title}</h1>
             <p>budget: {budget}</p>
             <p>{overview}</p>
+            <p>{runtime}</p>
             <StarRatings
                 rating={vote_average}
                 starRatedColor="yellow"
