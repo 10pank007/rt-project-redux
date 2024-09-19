@@ -4,6 +4,7 @@ import {PosterPreview} from "../PosterPreview/PosterPreview";
 import StarRatings from "react-star-ratings";
 
 import css from './MovieInfo.module.css'
+import {NavLink} from "react-router-dom";
 
 interface IProps extends PropsWithChildren {
     moviesInfo: IOneMovie
@@ -26,7 +27,7 @@ const MovieInfo: FC<IProps> = ({moviesInfo}) => {
                 starDimension="20px"
                 starSpacing="5px"
             />
-            {genres.map(value => <p>{value.name}</p>)}
+            {genres.map(value => <NavLink to={`/genres/${value.id}/${value.name}`}>{value.name}</NavLink>)}
         </div>
     );
 };
